@@ -16,8 +16,6 @@ body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth; 
-  
-  /* SEU COSMOS OTIMIZADO */
   background-image: 
     radial-gradient(1px 1px at 10% 10%, #fff, transparent),
     radial-gradient(1px 1px at 20% 50%, #fff, transparent),
@@ -69,60 +67,9 @@ body {
   transition: 0.3s;
 }
 
-.nav-links a:hover {
-  color: #d4af37;
-}
+.nav-links a:hover { color: #d4af37; }
 
-.logout-btn {
-  background: transparent;
-  border: 1px solid #d4af37;
-  color: #d4af37;
-  padding: 5px 15px;
-  margin-left: 20px;
-  font-size: 0.7rem;
-  cursor: pointer;
-}
-
-/* --- ESTILO DO BOTÃO DE LOGIN MOCK (RESTAURADO) --- */
-.login-box-hero {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.btn-login-mock {
-  background: transparent;
-  border: 2px solid #d4af37;
-  color: #d4af37; /* Dourado garantido */
-  padding: 15px 40px;
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  text-transform: uppercase;
-  text-decoration: none; /* Remove o azul de link caso use <a> */
-  display: inline-block;
-}
-
-.btn-login-mock:hover {
-  background: #d4af37;
-  color: #020205;
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-  transform: translateY(-3px);
-}
-
-.login-hint {
-  font-size: 0.8rem;
-  color: #888;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* --- ESTRUTURA DE SEÇÕES --- */
+/* --- HERO & BOTÃO DOURADO --- */
 .hero-section {
   height: 100vh;
   display: flex;
@@ -131,15 +78,37 @@ body {
   align-items: center;
 }
 
-.section-padding {
-  padding: 120px 10%;
-  min-height: 70vh;
+.btn-login-mock {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37 !important;
+  padding: 15px 40px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 30px;
 }
+
+.btn-login-mock:hover {
+  background: #d4af37;
+  color: #020205 !important;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+}
+
+/* --- SEÇÕES & TIPOGRAFIA --- */
+.section-padding { padding: 120px 10%; min-height: 70vh; }
 
 h1 {
   font-family: 'Cinzel', serif;
   color: #d4af37;
-  font-size: clamp(2.5rem, 10vw, 4rem); /* Responsivo */
+  font-size: clamp(2.5rem, 10vw, 4rem);
   margin: 0;
   letter-spacing: 5px;
   text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
@@ -152,7 +121,6 @@ h1 {
   margin-bottom: 40px;
 }
 
-/* --- SEÇÃO SOBRE --- */
 .sobre-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -166,31 +134,20 @@ h1 {
   font-size: 1.1rem;
   color: #ccc;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
-.sobre-icon {
-  font-size: 8rem;
-  color: rgba(212, 175, 55, 0.1);
-  text-align: center;
-}
-
-/* --- ORÁCULO: ÁREA DAS CARTAS --- */
-.oraculo-bg {
-  background: rgba(10, 10, 15, 0.4);
-}
-
+/* --- ORÁCULO: CARTAS --- */
 .fileira-cartas-reta {
   position: relative;
   width: 100%;
-  min-height: 400px; /* Aumentado para evitar cortes */
+  min-height: 400px;
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Permite quebrar linha se o espaço acabar */
 }
 
 .carta-plana {
-  /* No desktop mantém seu estilo original de leque */
   position: absolute;
   width: 140px;
   border-radius: 8px;
@@ -210,95 +167,46 @@ h1 {
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
 }
 
-/* --- RESULTADO --- */
+/* --- RESULTADO (MELHORADO PARA LEITURA) --- */
 .resultado-final {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.02);
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 50px 30px;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 20px;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .imagem-revelada {
-  width: 250px;
+  width: 220px;
   border-radius: 10px;
   border: 2px solid #d4af37;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 .texto-ia {
   font-size: 1.2rem;
-  line-height: 1.8;
+  line-height: 2; /* Espaçamento de mestre */
   color: #f0f0f0;
   font-style: italic;
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.btn-retry {
-  background: #d4af37;
-  color: #020205;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 25px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-.btn-retry:hover {
-  background: #fff;
-}
-
-/* --- FOOTER --- */
-.footer-oracle {
-  padding: 80px 5%;
-  background: #000;
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
-}
-
-.social-links a {
-  color: #d4af37;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 0.9rem;
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .sobre-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .fileira-cartas-reta { display: flex; flex-wrap: wrap; height: auto; gap: 10px; }
+  .carta-plana { position: relative; width: 80px; left: auto; transform: none; margin: 5px; }
+  .resultado-final { padding: 30px 15px; width: 92%; }
+  .texto-ia { font-size: 1.1rem; line-height: 1.7; }
+  .imagem-revelada { width: 180px; }
 }
 
 /* --- ANIMAÇÕES --- */
 .fade-in { animation: fadeIn 1.5s ease-out; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.pulse { animation: pulse 2s infinite; }
-@keyframes pulse { 50% { opacity: 0.5; } }
-
-/* --- RESPONSIVIDADE COMPLETA (CORREÇÃO MOBILE) --- */
-@media (max-width: 768px) {
-  .sobre-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  
-  .fileira-cartas-reta {
-    height: auto;
-    gap: 10px;
-    padding-bottom: 50px;
-  }
-
-  .carta-plana { 
-    /* Mudamos para RELATIVE no mobile para elas não amontoarem */
-    position: relative; 
-    width: 80px; 
-    left: auto;
-    transform: none; /* Remove o amontoado central */
-    margin: 5px;
-  }
-
-  .carta-plana:hover {
-    transform: scale(1.1) translateY(-10px);
-    left: auto;
-  }
-
-  h1 { font-size: 2.5rem; }
-  .section-title { font-size: 1.8rem; }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
