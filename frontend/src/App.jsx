@@ -81,19 +81,29 @@ function App() {
         </div>
       </header>
 
-      {/* --- SEÇÃO 2: SOBRE THOTH & CROWLEY --- */}
+{/* --- SEÇÃO 2: SOBRE THOTH & CROWLEY --- */}
       <section id="sobre" className="section-padding fade-in">
         <div className="container">
           <h2 className="section-title">O Espelho da Alma</h2>
           <div className="sobre-grid">
             <div className="sobre-text">
               <p>
-                O Tarot de Thoth foi criado pelo mestre <strong>Aleister Crowley</strong> e pintado por Lady Frieda Harris. 
-                Diferente dos baralhos tradicionais, ele mergulha profundamente na astrologia, na cabala e na geometria sagrada.
+                O Tarot de Thoth foi concebido pelo mestre <strong>Aleister Crowley</strong> e imortalizado pela arte de Lady Frieda Harris. 
+                Diferente dos baralhos tradicionais, ele mergulha profundamente na astrologia, na cabala e na geometria sagrada. 
+                Baseado na obra <em>"Tarô: O Espelho da Alma"</em> de Gerd Ziegler, este oráculo não apenas prevê, 
+                mas revela a verdade crua da sua psique sob a sabedoria do escriba divino Thoth.
               </p>
+              
               <p>
-                Baseado no livro <em>"Tarô: O Espelho da Alma"</em> de Gerd Ziegler, este oráculo não apenas prevê, 
-                mas revela a verdade crua da sua psique e o conselho prático do escriba divino Thoth.
+                Desenvolvi este sistema para que os buscadores não permaneçam estagnados em seus dilemas, mas encontrem valor na jornada humana, 
+                elevando sua consciência. Este Tarot não é para predições vazias, mas para <strong>abrir os olhos do coração</strong>, 
+                já que nossos olhos físicos muitas vezes não conseguem distinguir entre a verdade e a ilusão.
+              </p>
+
+              <p>
+                <strong>Instruções:</strong> Foque em sua consulta — seja sobre trabalho, família ou relacionamentos. 
+                Abaixo, você escolherá uma lâmina entre os 22 Arcanos Maiores. Que este momento sirva como uma 
+                virada de chave para o seu desenvolvimento pessoal.
               </p>
             </div>
             <div className="sobre-icon">𓁟</div>
