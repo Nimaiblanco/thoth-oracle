@@ -83,7 +83,7 @@ body {
   cursor: pointer;
 }
 
-/* --- ESTILO DO BOTÃO DE LOGIN MOCK (ADICIONADO) --- */
+/* --- ESTILO DO BOTÃO DE LOGIN MOCK --- */
 .login-box-hero {
   margin-top: 30px;
   display: flex;
@@ -195,7 +195,6 @@ h1 {
   transition: 0.4s ease;
   filter: brightness(0.6);
   left: 50%;
-  /* A LÓGICA RETA: Sem rotate, apenas deslocamento X */
   transform: translateX(calc(-50% + (var(--i) - 10.5) * 40px));
 }
 
@@ -271,7 +270,7 @@ h1 {
 .pulse { animation: pulse 2s infinite; }
 @keyframes pulse { 50% { opacity: 0.5; } }
 
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE COMPLETA */
 @media (max-width: 768px) {
   .sobre-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
