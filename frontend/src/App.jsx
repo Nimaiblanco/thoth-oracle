@@ -90,8 +90,7 @@ function App() {
               <p>
                 O Tarot de Thoth foi concebido pelo mestre <strong>Aleister Crowley</strong> e imortalizado pela arte de Lady Frieda Harris. 
                 Diferente dos baralhos tradicionais, ele mergulha profundamente na astrologia, na cabala e na geometria sagrada. 
-                Baseado na obra <em>"Tarô: O Espelho da Alma"</em> de Gerd Ziegler, este oráculo não apenas prevê, 
-                mas revela a verdade crua da sua psique sob a sabedoria do escriba divino Thoth.
+                Baseado na obra <em>"Tarô: O Espelho da Alma"</em> de Gerd Ziegler, este oráculo, revela a verdade crua da sua psique sob a sabedoria do escriba divino Thoth.
               </p>
               
               <p>
@@ -99,7 +98,7 @@ function App() {
                 elevando sua consciência. Este Tarot não é para predições vazias, mas para <strong>abrir os olhos do coração</strong>, 
                 já que nossos olhos físicos muitas vezes não conseguem distinguir entre a verdade e a ilusão.
               </p>
-
+              
               <p>
                 <strong>Instruções:</strong> Foque em sua consulta — seja sobre trabalho, família ou relacionamentos. 
                 Abaixo, você escolherá uma lâmina entre os 22 Arcanos Maiores. Que este momento sirva como uma 
