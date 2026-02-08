@@ -83,6 +83,43 @@ body {
   cursor: pointer;
 }
 
+/* --- ESTILO DO BOTÃO DE LOGIN MOCK (ADICIONADO) --- */
+.login-box-hero {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-login-mock {
+  background: transparent;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  padding: 15px 40px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+}
+
+.btn-login-mock:hover {
+  background: #d4af37;
+  color: #020205;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+}
+
+.login-hint {
+  font-size: 0.8rem;
+  color: #888;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 /* --- ESTRUTURA DE SEÇÕES --- */
 .hero-section {
   height: 100vh;
@@ -158,7 +195,7 @@ h1 {
   transition: 0.4s ease;
   filter: brightness(0.6);
   left: 50%;
-  /* A LÓGICA RETA QUE VOCÊ PEDIU: Sem rotate, apenas deslocamento X */
+  /* A LÓGICA RETA: Sem rotate, apenas deslocamento X */
   transform: translateX(calc(-50% + (var(--i) - 10.5) * 40px));
 }
 
@@ -192,6 +229,23 @@ h1 {
   line-height: 1.8;
   color: #f0f0f0;
   font-style: italic;
+}
+
+.btn-retry {
+  background: #d4af37;
+  color: #020205;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 25px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-retry:hover {
+  background: #fff;
 }
 
 /* --- FOOTER --- */
