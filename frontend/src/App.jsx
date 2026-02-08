@@ -20,7 +20,7 @@ function App() {
     if (carregando) return;
     setCarregando(true)
     try {
-      const response = await axios.post('http://localhost:5000/api/consultar', {})
+      const response = await axios.post('https://thoth-oracle.onrender.com/api/consultar', {})
       setResultado(response.data)
       setEscolhendo(false)
       // Scroll automático para o resultado
