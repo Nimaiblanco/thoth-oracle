@@ -14,8 +14,8 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-// --- CONFIGURAÇÃO DE SEGURANÇA (CORS) ---
-// Autoriza seu site na Vercel e o seu ambiente local
+// --- CORREÇÃO DE SEGURANÇA (CORS) ---
+// Configurado para autorizar sua Vercel e evitar o erro de conexão
 app.use(cors({
   origin: ['https://thoth-oracle.vercel.app', 'http://localhost:5173'],
   methods: ['GET', 'POST'],
@@ -25,7 +25,7 @@ app.use(cors({
 app.use(express.json()); 
 
 // --- SERVIR IMAGENS ESTÁTICAS ---
-// path.resolve garante que o caminho seja absoluto, evitando erros no Linux do Render
+// path.resolve é mais estável para garantir que o Render encontre a pasta
 app.use('/images', express.static(path.resolve(__dirname, 'images')));
 
 /**
@@ -47,18 +47,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
  * ROTA DE CONSULTA AO ORÁCULO
  */
 app.post('/api/consultar', async (req, res) => {
-  try {
-    // 1. SELEÇÃO DA CARTA NO BANCO
-    const cartas = await Carta.find({ tipo: "Arcano Maior" });
-    if (!cartas || cartas.length === 0) {
-      console.error("❌ ERRO: Coleção de cartas não encontrada no MongoDB.");
-      return res.status(500).json({ erro: "O banco de dados de cartas está inacessível." });
-    }
-    
-    const cartaSorteada = cartas[Math.floor(Math.random() * cartas.length)];
-    const nomeIdentificador = cartaSorteada.slug.replace(/-/g, ' ').toUpperCase();
+  const { pergunta } = req.body;
 
-    // 2. AUTODISCOVERY DE MODELOS GEMINI
+  try {
+    // 1. AUTODISCOVERY: Busca todos os modelos disponíveis (Mantido conforme solicitado)
     const urlDiscovery = `https://generativelanguage.googleapis.com/v1beta/models?key=${process.env.GEMINI_API_KEY}`;
     const respDiscovery = await fetch(urlDiscovery);
     const dataDiscovery = await respDiscovery.json();
@@ -69,13 +61,20 @@ app.post('/api/consultar', async (req, res) => {
           .map(m => m.name)
       : [];
 
-    // 3. FILA DE TENTATIVAS (RESILIÊNCIA)
+    // 2. ORDEM DE PRIORIDADE (Fallback - Mantido conforme solicitado)
     const filaDeTentativas = [
-      modelosDisponiveis.find(m => m.includes("gemini-2.0-flash")), // Atualizado para 2.0
+      modelosDisponiveis.find(m => m.includes("gemini-2.5-flash")),
       modelosDisponiveis.find(m => m.includes("gemini-1.5-flash")),
       modelosDisponiveis.find(m => m.includes("gemini-pro")),
-      "models/gemini-1.5-flash" // Fallback direto
+      modelosDisponiveis[0]
     ].filter(Boolean);
+
+    // 3. SELEÇÃO DA CARTA NO BANCO
+    const cartas = await Carta.find({ tipo: "Arcano Maior" });
+    if (cartas.length === 0) throw new Error("Banco de dados de cartas vazio.");
+    
+    const cartaSorteada = cartas[Math.floor(Math.random() * cartas.length)];
+    const nomeIdentificador = cartaSorteada.slug.replace(/-/g, ' ').toUpperCase();
 
     // 4. PROMPT ENGINEERING (Persona de Thoth)
     const prompt = `
@@ -91,9 +90,9 @@ app.post('/api/consultar', async (req, res) => {
       5. Termine com uma frase de poder.
     `;
 
-    // 5. SISTEMA DE RETRY LOOP
-    let responseIA = null;
-    let modeloQueFuncionou = null;
+    // 5. SISTEMA DE RESILIÊNCIA (Retry Loop)
+    let responseIA;
+    let modeloQueFuncionou;
 
     for (const modelo of filaDeTentativas) {
       try {
@@ -108,7 +107,7 @@ app.post('/api/consultar', async (req, res) => {
           break; 
         }
       } catch (err) {
-        console.warn(`❌ Falha no modelo ${modelo}: ${err.message}`);
+        console.warn(`❌ Falha no modelo ${modelo}: ${err.message}. Tentando próximo...`);
       }
     }
 
@@ -135,8 +134,10 @@ app.post('/api/consultar', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 conectarBanco().then(() => {
   app.listen(PORT, () => {
-    console.log(`🚀 Templo Ativo: Porto ${PORT}`);
+    // Log profissional para o Render
+    console.log(`🚀 Templo Ativo. Porta: ${PORT}`);
+    console.log(`🔌 Banco de Dados Conectado.`);
   });
 }).catch(err => {
-  console.error("❌ FALHA CRÍTICA NA CONEXÃO COM MONGODB:", err.message);
+  console.error("❌ FALHA CRÍTICA NO STARTUP:", err.message);
 });
