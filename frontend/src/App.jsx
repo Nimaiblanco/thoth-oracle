@@ -122,7 +122,7 @@ function App() {
             <div className="tabuleiro-area">
               {escolhendo && !resultado && (
                 <div className="fade-in">
-                  <h3 className="instrucao-mística">Foque na sua consulta e toque em uma lâmina:</h3>
+                  <h3 className="instrucao-mística">Concentre-se em sua pergunta e escolha uma carta para iniciar a consulta:</h3>
                   <div className="fileira-cartas-reta">
                     {baralho.map((num, index) => (
                       <img 
